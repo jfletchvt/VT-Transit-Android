@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="lib" path="/Users/Fletcher/Google Drive/College/Sophomore Year/Fall 2013/CS 2114/CS2114-Support/student.jar"/>
+	<classpathentry kind="lib" path="/Users/Fletcher/Google Drive/College/Sophomore Year/Fall 2013/CS 2114/CS2114-Support/junit-4.7.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

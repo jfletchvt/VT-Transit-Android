@@ -1,0 +1,123 @@
+package com.cs2114.vttransit;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import com.cs2114.vttransit.R;
+
+import android.os.Bundle;
+import android.provider.MediaStore.Files;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+/**
+ * To write.
+ * 
+ * @author Seth Nute (seth12)
+ * @author Ben Kodres (bkobrien)
+ * @author Joe Fletcher (joevt)
+ * @version 11/8/13
+ */
+public class RoutesFragment extends Fragment {
+
+	private ListView listview;
+	private View rootView;
+	private int screenNum;
+
+	public RoutesFragment(int screenNum) {
+		this.screenNum = screenNum;
+	}
+
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+
+		rootView = inflater.inflate(R.layout.fragment_routes, container, false);
+
+		// now you must initialize your list view
+		listview = (ListView) rootView.findViewById(R.id.list);
+
+		String[] items = new String[] { "BT Commuter", "CRC Hospital",
+				"CRC Shuttle", "Harding Avenue", "Hethwood", "Hokie Express",
+				"Main Street North", "Main Street South", "Patrick Henry",
+				"Progress Street", "The Explorer", "Toms Creek",
+				"Two Town Trolley", "University City Boulevard",
+				"University Mall" };
+
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+				R.layout.text_view, items);
+
+		listview.setAdapter(adapter);
+
+		listview.setClickable(true);
+		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View view,
+					int position, long arg3) {
+
+				if (screenNum < 2)
+				{
+					screenNum++;
+				}
+				
+				System.out.println(screenNum + " - " + position);
+				
+				String[] items = null;
+				if (screenNum == 1) {
+					switch (position) {
+					case 0:
+						items = new String[] { "First stop", "Second stop",
+								"Third stop" };
+						break;
+					case 1:
+						items = new String[] { "fourth stop", "fifth stop",
+								"sixth stop" };
+					case 2:
+						items = new String[] { "seventh stop", "eigth stop",
+								"ninth stop" };
+					default:
+						items = new String[] { "Empty" };
+						break;
+					}
+				} else if (screenNum == 2) {
+					switch (position) {
+					case 0:
+						items = new String[] { "Firsttime", "Secondtime",
+								"Thirdtime" };
+						break;
+					case 1:
+						items = new String[] { "fourthtime", "fifth time",
+								"sixth time" };
+					case 2:
+						items = new String[] { "seventhtime", "eigth time",
+								"ninth time" };
+					default:
+						items = new String[] { "Empty" };
+						break;
+					}
+				}
+				ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+						getActivity(), R.layout.text_view, items);
+				listview.setAdapter(adapter);
+			}
+		});
+
+		return rootView;
+	}
+
+	public int getScreenNum() {
+		return screenNum;
+	}
+}
